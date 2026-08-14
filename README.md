@@ -25,4 +25,12 @@ and training loop by hand, no `transformers`, no `nanoGPT` fork.
 
 ---
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Jayaragul/Jayaragul/output/snake-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Jayaragul/Jayaragul/output/snake-light.svg">
+  <img alt="Contribution graph rendered as a snake" src="https://raw.githubusercontent.com/Jayaragul/Jayaragul/output/snake-light.svg">
+</picture>
+
+---
+
 [Portfolio](https://jayaragul.github.io/MY-PORTFOLIO-WEBSITE/) · [Medium](https://medium.com/@jayaragul) · jayaragul.in@gmail.com
