@@ -55,6 +55,28 @@ interfaces non-technical people can use.
 | **[factory-twin](https://github.com/Jayaragul/factory-twin)** | Real-time 3D factory digital twin with AI anomaly detection. React + Three.js front end, FastAPI + SQLAlchemy back end. |
 | **[kidney](https://github.com/Jayaragul/kidney)** | Streamlit app predicting kidney-disease risk from clinical parameters such as age, blood pressure and blood sugar. |
 
+---
+
+### How my agents actually work
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./pipeline-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="./pipeline-light.svg">
+  <img alt="Agent pipeline: query, intent routing, expert selection, tool use, shared memory, response" src="./pipeline-dark.svg">
+</picture>
+
+A query gets classified by intent, routed to the expert best suited to it, answered with tools
+where needed, and merged back into shared memory so the next turn has context. Not one-shot
+prompting.
+
+---
+
+### Writing
+
+<!-- MEDIUM:START -->
+Latest posts appear here automatically.
+<!-- MEDIUM:END -->
+
 ### Working with
 
 `Python` · `PyTorch` · `SQL` · `Django` · `Flask` · `OpenCV` · `TensorFlow` · `pandas` · `scikit-learn` · `MongoDB` · `LLMs & fine-tuning` · `Agentic AI` · `Google Cloud` · `Linux RTOS` · `Git`

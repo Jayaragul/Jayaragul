@@ -204,9 +204,69 @@ def capabilities(pal):
     return "\n".join(p)
 
 
+def pipeline(pal):
+    """How an agent query actually flows: route -> select expert -> tools -> merge."""
+    W, H = 1000, 300
+    MID = 152
+    p = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" '
+         f'role="img" aria-label="Agent pipeline: query, intent routing, expert selection, '
+         f'tool use, shared memory, response">']
+    frame(p, W, H, pal)
+
+    experts = [("Math", 59), ("Code", 114), ("RAG", 169), ("Chat", 224)]
+    EX_X, EX_W, EX_H = 366, 120, 38
+
+    def box(x, y, w, h, title, sub=None, strong=False):
+        stroke = pal["accent"] if strong else pal["border"]
+        p.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="5" fill="{pal["bg"]}" '
+                 f'stroke="{stroke}" stroke-width="1.2"/>')
+        ty = y + h / 2 + (0 if sub else 4)
+        p.append(f'<text x="{x + w/2}" y="{ty:.0f}" text-anchor="middle" font-family="Georgia,serif" '
+                 f'font-size="13.5" font-weight="600" fill="{pal["text"]}">{escape(title)}</text>')
+        if sub:
+            p.append(f'<text x="{x + w/2}" y="{ty + 13:.0f}" text-anchor="middle" '
+                     f'font-family="ui-monospace,monospace" font-size="8" '
+                     f'fill="{pal["muted"]}">{escape(sub)}</text>')
+
+    # connectors, drawn first so boxes sit on top
+    for i, (_, ey) in enumerate(experts):
+        d = f"M316,{MID} L{EX_X},{ey} M{EX_X+EX_W},{ey} L556,{MID}"
+        p.append(f'<path d="{d}" fill="none" stroke="{pal["accent"]}" stroke-width="1" opacity=".35" '
+                 f'stroke-dasharray="4 5">'
+                 f'<animate attributeName="stroke-dashoffset" values="18;0" dur="1.4s" '
+                 f'begin="{i*0.18:.2f}s" repeatCount="indefinite"/></path>')
+    for x1, x2 in ((146, 186), (686, 746)):
+        p.append(f'<path d="M{x1},{MID} L{x2},{MID}" stroke="{pal["accent"]}" stroke-width="1" '
+                 f'opacity=".45" stroke-dasharray="4 5">'
+                 f'<animate attributeName="stroke-dashoffset" values="18;0" dur="1.4s" repeatCount="indefinite"/></path>')
+
+    box(36, MID-22, 110, 44, "Query")
+    box(186, MID-24, 130, 48, "Router", "INTENT", strong=True)
+    for name, ey in experts:
+        box(EX_X, ey - EX_H/2, EX_W, EX_H, name)
+    box(556, MID-24, 130, 48, "Merge", "SHARED MEMORY", strong=True)
+    box(746, MID-22, 120, 44, "Response")
+
+    # packets travelling the full route, one per expert, staggered
+    CYCLE = 4.0
+    for i, (_, ey) in enumerate(experts):
+        route = (f"M146,{MID} L316,{MID} L{EX_X},{ey} L{EX_X+EX_W},{ey} "
+                 f"L556,{MID} L746,{MID}")
+        p.append(f'<circle r="4" fill="{pal["levels"][-1]}" opacity="0">'
+                 f'<animateMotion path="{route}" dur="{CYCLE}s" begin="{i*0.5:.2f}s" repeatCount="indefinite"/>'
+                 f'<animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.06;0.94;1" '
+                 f'dur="{CYCLE}s" begin="{i*0.5:.2f}s" repeatCount="indefinite"/></circle>')
+
+    p.append(f'<text x="{W/2}" y="{H-26}" text-anchor="middle" font-family="ui-monospace,monospace" '
+             f'font-size="9" letter-spacing="1.5" fill="{pal["muted"]}">'
+             f'CLASSIFY  ·  SELECT  ·  CALL TOOLS  ·  MERGE INTO MEMORY</text>')
+    p.append('</svg>')
+    return "\n".join(p)
+
+
 if __name__ == "__main__":
     for pal in (DARK, LIGHT):
-        for stem, fn in (("banner", banner), ("capabilities", capabilities)):
+        for stem, fn in (("banner", banner), ("capabilities", capabilities), ("pipeline", pipeline)):
             path = f"{stem}-{pal['name']}.svg"
             open(path, "w", encoding="utf-8").write(fn(pal))
             print("wrote", path)

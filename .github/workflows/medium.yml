@@ -1,0 +1,75 @@
+name: Sync latest Medium posts
+
+on:
+  schedule:
+    - cron: "0 4 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Pull the feed and rewrite the writing block
+        run: |
+          python - <<'PY'
+          import re, sys, urllib.request, xml.etree.ElementTree as ET
+
+          FEED = "https://medium.com/feed/@jayaragul"
+          START, END = "<!-- MEDIUM:START -->", "<!-- MEDIUM:END -->"
+
+          try:
+              req = urllib.request.Request(FEED, headers={"User-Agent": "Mozilla/5.0"})
+              raw = urllib.request.urlopen(req, timeout=30).read()
+              items = ET.fromstring(raw).find("channel").findall("item")[:4]
+          except Exception as e:
+              print(f"feed unavailable ({e}) - leaving the README untouched")
+              sys.exit(0)
+
+          if not items:
+              print("feed returned no posts - leaving the README untouched")
+              sys.exit(0)
+
+          rows = []
+          for it in items:
+              title = (it.findtext("title") or "").strip()
+              link = (it.findtext("link") or "").split("?")[0]
+              date = (it.findtext("pubDate") or "")[5:16]
+              if title and link:
+                  rows.append(f"- [{title}]({link}) &nbsp;<sub>{date}</sub>")
+
+          if not rows:
+              print("no usable items - leaving the README untouched")
+              sys.exit(0)
+
+          block = START + "\n" + "\n".join(rows) + "\n" + END
+          readme = open("README.md", encoding="utf-8").read()
+          if START not in readme:
+              print("marker missing - nothing to do")
+              sys.exit(0)
+
+          updated = re.sub(re.escape(START) + r".*?" + re.escape(END), block, readme, flags=re.S)
+          if updated != readme:
+              open("README.md", "w", encoding="utf-8").write(updated)
+              print(f"updated with {len(rows)} post(s)")
+          else:
+              print("already up to date")
+          PY
+
+      - name: Commit if changed
+        run: |
+          if [[ -n "$(git status --porcelain README.md)" ]]; then
+            git config user.name  "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add README.md
+            git commit -m "Update latest Medium posts"
+            git push
+          else
+            echo "no change"
+          fi
