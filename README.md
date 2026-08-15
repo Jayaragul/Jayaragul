@@ -74,7 +74,10 @@ prompting.
 ### Writing
 
 <!-- MEDIUM:START -->
-Latest posts appear here automatically.
+- [Why Agentic AI Is the Next Big Shift in Artificial Intelligence](https://medium.com/@jayaragul/why-agentic-ai-is-the-next-big-shift-in-artificial-intelligence-ead0b98adabe) &nbsp;<sub>23 May 2026</sub>
+- [From ‘Attention Is All You Need’ to My Own GPT: Training an SLM From Scratch](https://medium.com/@jayaragul/from-attention-is-all-you-need-to-my-own-gpt-training-an-slm-from-scratch-b426ab9ec604) &nbsp;<sub>31 Dec 2025</sub>
+- [“Two Days, One Summit, Infinite Lessons: Our Start-up's Takeaways from TNGSS 2025”](https://medium.com/@jayaragul/two-days-one-summit-infinite-lessons-our-start-ups-takeaways-from-tngss-2025-983757508696) &nbsp;<sub>12 Oct 2025</sub>
+- [“Why Sitting in Class Why not bunk: Real Skills Every Engineering Student Should Gain”](https://medium.com/@jayaragul/why-sitting-in-class-why-not-bunk-explore-engineering-in-641a5e1bbc8c) &nbsp;<sub>14 Dec 2024</sub>
 <!-- MEDIUM:END -->
 
 ### Working with
