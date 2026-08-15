@@ -1,4 +1,8 @@
-![Jayaragul N — building language models from scratch](./banner.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./banner-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="./banner-light.svg">
+  <img alt="Jayaragul N — AI engineer" src="./banner-dark.svg">
+</picture>
 
 AI engineer in Coimbatore, India. I build across the whole stack — language models and agentic
 systems, the backends and APIs that serve them, computer vision, data science, and the
@@ -6,7 +10,11 @@ occasional robot. I try to understand a problem and its domain properly before I
 
 ---
 
-![Capability map](./capabilities.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./capabilities-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="./capabilities-light.svg">
+  <img alt="Capability map across five engineering domains" src="./capabilities-dark.svg">
+</picture>
 
 ---
 
