@@ -1,14 +1,31 @@
 ![Jayaragul N — building language models from scratch](./banner.svg)
 
-AI engineer in Coimbatore, India. I work on language models, agentic systems and the
-backends that carry them — and I try to understand a problem and its domain properly
-before I start building.
-
-Most recently that meant not settling for calling an LLM API. I wrote one instead:
-a **27.8M-parameter GPT trained from scratch** in PyTorch — attention, tokenizer pipeline
-and training loop by hand, no `transformers`, no `nanoGPT` fork.
+AI engineer in Coimbatore, India. I build across the whole stack — language models and agentic
+systems, the backends and APIs that serve them, computer vision, data science, and the
+occasional robot. I try to understand a problem and its domain properly before I start building.
 
 ---
+
+![Capability map](./capabilities.svg)
+
+---
+
+### What I build
+
+**Language models & agentic AI** — I don't stop at calling an API. I've fine-tuned small models
+on private data, built agents that plan and execute in structured steps, and written a
+**27.8M-parameter GPT from scratch** in PyTorch to understand what's actually happening inside one.
+
+**Backends & full stack** — Django and Flask services, REST APIs, SQL and MongoDB, deployed and
+running. Most of my AI work ships behind an endpoint someone can actually call.
+
+**Computer vision** — CNN classifiers for medical imaging and real-time detection, built with
+OpenCV and TensorFlow.
+
+**Data science** — cleaning messy real-world data, training models, and putting them behind
+interfaces non-technical people can use.
+
+**Robotics** — motion profiling under real-time constraints on Linux RTOS, with IoT control.
 
 ### Selected work
 
@@ -18,10 +35,11 @@ and training loop by hand, no `transformers`, no `nanoGPT` fork.
 | **[INFERENCING-LLM-LAMA](https://github.com/Jayaragul/INFERENCING-LLM-LAMA)** | Privacy-first local AI platform with agentic capabilities — web search, RAG and tools. Runs fully offline on Ollama + FastAPI. |
 | **[industrial-data-agent](https://github.com/Jayaragul/industrial-data-agent)** | Safety-first Gemini-powered CLI for evidence-backed analysis of industrial orders, machine utilisation and inventory, with sandboxed code execution. |
 | **[kidney](https://github.com/Jayaragul/kidney)** | Streamlit app predicting kidney-disease risk from clinical parameters such as age, blood pressure and blood sugar. |
+| **[Mask-deduct](https://github.com/Jayaragul/Mask-deduct)** | Gradio app detecting whether a person is wearing a face mask, from a Keras/MobileNetV2 classifier. Deployed as a Hugging Face Space. |
 
 ### Working with
 
-`Python` · `PyTorch` · `SQL` · `Django` · `Flask` · `OpenCV` · `LLMs & fine-tuning` · `Agentic AI` · `Google Cloud` · `Git`
+`Python` · `PyTorch` · `SQL` · `Django` · `Flask` · `OpenCV` · `TensorFlow` · `pandas` · `scikit-learn` · `MongoDB` · `LLMs & fine-tuning` · `Agentic AI` · `Google Cloud` · `Linux RTOS` · `Git`
 
 ---
 
