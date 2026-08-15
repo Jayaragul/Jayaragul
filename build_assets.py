@@ -132,51 +132,72 @@ def banner(pal):
 
 
 def capabilities(pal):
-    W, H, CX, CY, R = 1000, 340, 500, 172, 128
+    """Radial capability map.
+
+    Labels sit radially *outward* from each node and the spokes stop short of
+    the node, so a connector can never run through its own label text.
+    """
+    W, H, CX, CY = 1000, 380, 500, 186
+    RX, RY = 332, 124
+    NODE_R, GAP = 6, 20        # spoke stops GAP px before the node centre
     domains = [
-        ("LLMs & Agents", "PyTorch · fine-tuning · RAG"),
-        ("Backend & APIs", "Django · Flask · SQL"),
+        ("Language Models", "PyTorch · transformers · from scratch"),
+        ("AI Agents",       "planning · tool use · RAG"),
+        ("Backend & APIs",  "Django · Flask · SQL"),
         ("Computer Vision", "OpenCV · CNNs"),
-        ("Data Science", "pandas · scikit-learn"),
-        ("Robotics", "Linux RTOS · IoT"),
+        ("Data Science",    "pandas · scikit-learn"),
+        ("Robotics",        "Linux RTOS · IoT"),
     ]
     n = len(domains)
     p = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" '
-         f'role="img" aria-label="Capability map across five engineering domains">']
+         f'role="img" aria-label="Capability map: language models, AI agents, backend and APIs, '
+         f'computer vision, data science, robotics">']
     frame(p, W, H, pal)
 
-    pos = []
+    nodes = []
     for i, (name, sub) in enumerate(domains):
         a = -math.pi / 2 + i * (2 * math.pi / n)
-        x, y = CX + R * math.cos(a) * 2.55, CY + R * math.sin(a) * 0.92
-        pos.append((x, y, name, sub))
-        p.append(f'<line x1="{CX}" y1="{CY}" x2="{x:.1f}" y2="{y:.1f}" stroke="{pal["accent"]}" '
-                 f'stroke-width="1" opacity=".4" stroke-dasharray="5 6">'
+        x, y = CX + RX * math.cos(a), CY + RY * math.sin(a)
+        nodes.append((x, y, a, name, sub))
+        # stop the spoke short of the node so it never touches the label
+        d = math.hypot(x - CX, y - CY)
+        ex, ey = CX + (x - CX) * (d - GAP) / d, CY + (y - CY) * (d - GAP) / d
+        p.append(f'<line x1="{CX}" y1="{CY}" x2="{ex:.1f}" y2="{ey:.1f}" stroke="{pal["accent"]}" '
+                 f'stroke-width="1" opacity=".42" stroke-dasharray="5 6">'
                  f'<animate attributeName="stroke-dashoffset" values="22;0" dur="1.6s" '
                  f'begin="{i * 0.22:.2f}s" repeatCount="indefinite"/></line>')
 
-    p.append(f'<circle cx="{CX}" cy="{CY}" r="40" fill="none" stroke="{pal["accent"]}" stroke-width="1.4"/>')
+    p.append(f'<circle cx="{CX}" cy="{CY}" r="40" fill="{pal["bg"]}" stroke="{pal["accent"]}" stroke-width="1.4"/>')
     p.append(f'<circle cx="{CX}" cy="{CY}" r="40" fill="none" stroke="{pal["accent"]}" stroke-width="1">'
-             f'<animate attributeName="r" values="40;62" dur="3.2s" repeatCount="indefinite"/>'
+             f'<animate attributeName="r" values="40;64" dur="3.2s" repeatCount="indefinite"/>'
              f'<animate attributeName="opacity" values=".55;0" dur="3.2s" repeatCount="indefinite"/></circle>')
     p.append(f'<text x="{CX}" y="{CY - 2}" text-anchor="middle" font-family="Georgia,serif" font-size="17" '
              f'font-weight="700" fill="{pal["text"]}">build</text>')
     p.append(f'<text x="{CX}" y="{CY + 15}" text-anchor="middle" font-family="ui-monospace,monospace" '
              f'font-size="8" letter-spacing="1.6" fill="{pal["muted"]}">END TO END</text>')
 
-    for i, (x, y, name, sub) in enumerate(pos):
+    for i, (x, y, a, name, sub) in enumerate(nodes):
         col = pal["levels"][-1]
-        p.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="6" fill="{col}">'
-                 f'<animate attributeName="r" values="6;8.5;6" dur="2.8s" begin="{i * 0.35:.2f}s" '
-                 f'repeatCount="indefinite"/></circle>')
-        p.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="6" fill="none" stroke="{col}" stroke-width="1">'
-                 f'<animate attributeName="r" values="6;18" dur="2.8s" begin="{i * 0.35:.2f}s" repeatCount="indefinite"/>'
+        p.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{NODE_R}" fill="{col}">'
+                 f'<animate attributeName="r" values="{NODE_R};{NODE_R + 2.5};{NODE_R}" dur="2.8s" '
+                 f'begin="{i * 0.35:.2f}s" repeatCount="indefinite"/></circle>')
+        p.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{NODE_R}" fill="none" stroke="{col}" stroke-width="1">'
+                 f'<animate attributeName="r" values="{NODE_R};18" dur="2.8s" begin="{i * 0.35:.2f}s" repeatCount="indefinite"/>'
                  f'<animate attributeName="opacity" values=".7;0" dur="2.8s" begin="{i * 0.35:.2f}s" '
                  f'repeatCount="indefinite"/></circle>')
-        dy = -20 if y < CY else 26
-        p.append(f'<text x="{x:.1f}" y="{y + dy:.1f}" text-anchor="middle" font-family="Georgia,serif" '
-                 f'font-size="14.5" font-weight="600" fill="{pal["text"]}">{escape(name)}</text>')
-        p.append(f'<text x="{x:.1f}" y="{y + dy + 15:.1f}" text-anchor="middle" '
+
+        # place the label radially outward, anchored away from the spoke
+        c = math.cos(a)
+        if abs(c) < 0.3:                       # top / bottom
+            anchor, lx = "middle", x
+            ly = y - 24 if y < CY else y + 32
+        elif c > 0:                            # right side
+            anchor, lx, ly = "start", x + 16, y + 4
+        else:                                  # left side
+            anchor, lx, ly = "end", x - 16, y + 4
+        p.append(f'<text x="{lx:.1f}" y="{ly:.1f}" text-anchor="{anchor}" font-family="Georgia,serif" '
+                 f'font-size="15" font-weight="600" fill="{pal["text"]}">{escape(name)}</text>')
+        p.append(f'<text x="{lx:.1f}" y="{ly + 15:.1f}" text-anchor="{anchor}" '
                  f'font-family="ui-monospace,monospace" font-size="9" fill="{pal["muted"]}">{escape(sub)}</text>')
 
     p.append('</svg>')
