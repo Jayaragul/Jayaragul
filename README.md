@@ -42,10 +42,29 @@ interfaces non-technical people can use.
 
 **Robotics** — motion profiling under real-time constraints on Linux RTOS, with IoT control.
 
+### Running right now
+
+**[THE VISSION](https://jayaragul.github.io/THE_VISSION/)** — a daily newspaper about AI with no
+newsroom. A scheduled pipeline researches the day's stories, writes them, checks every claim
+against its own sourcing rules, and publishes. The interesting part is what it does when it
+fails: an edition that can't clear the editorial gate doesn't ship, and yesterday's paper stays
+up. It has never invented a source, because it isn't allowed to run one it couldn't open.
+
+Three tiers degrade independently, so the site cannot go dark — the AI-written Edition, a
+Digest ranked by a deterministic program with no model in the loop, and the raw Wire straight
+from publishers' feeds. Link rot is checked weekly across every source ever cited, storage is
+projected years ahead against the hosting ceiling, and corrections are permanent and public.
+
+[`the repo`](https://github.com/Jayaragul/THE_VISSION) · Node, zero dependencies · Gemini CLI on
+GitHub Actions · the model behind it is deliberately swappable
+
+---
+
 ### Selected work
 
 | | |
 |---|---|
+| **[twinops](https://github.com/Jayaragul/twinops)** | Draw your factory, press play, watch the bottleneck appear. A zero-install digital twin studio for production lines that runs entirely in the browser. |
 | **[slm-from-scratch](https://github.com/Jayaragul/slm-from-scratch)** | A 27,846,000-parameter decoder-only transformer trained on TinyStories. Hand-written causal attention, weight-tied embeddings, memory-mapped data pipeline. Trained weights included. |
 | **[INFERENCING-LLM-LAMA](https://github.com/Jayaragul/INFERENCING-LLM-LAMA)** | Privacy-first local AI platform with agentic capabilities — web search, RAG and tools. Runs fully offline on Ollama + FastAPI. |
 | **[industrial-data-agent](https://github.com/Jayaragul/industrial-data-agent)** | Safety-first Gemini-powered CLI for evidence-backed analysis of industrial orders, machine utilisation and inventory, with sandboxed code execution. |
@@ -53,7 +72,28 @@ interfaces non-technical people can use.
 | **[health-care-agent](https://github.com/Jayaragul/health-care-agent)** | Healthcare information assistant built on AI-harness principles, with guardrails and a clear split between routing, tools and generation. |
 | **[agri-hackathon](https://github.com/Jayaragul/agri-hackathon)** | **Thulir** — an AI farming companion for smallholder farmers. Winner: Best Use of AI for Zero Hunger & Economic Growth, GDG Tech for Good 2026. |
 | **[factory-twin](https://github.com/Jayaragul/factory-twin)** | Real-time 3D factory digital twin with AI anomaly detection. React + Three.js front end, FastAPI + SQLAlchemy back end. |
+| **[fundamental-analais](https://github.com/Jayaragul/fundamental-analais)** | Indian Market Analyzer — fundamental analysis for Nifty 50 stocks, built on Streamlit over Yahoo Finance data. |
 | **[kidney](https://github.com/Jayaragul/kidney)** | Streamlit app predicting kidney-disease risk from clinical parameters such as age, blood pressure and blood sugar. |
+
+---
+
+### What shipping these actually taught me
+
+**Don't try to make the model perfect — close the loop.** THE VISSION publishes unattended.
+Every time I hardened the prompt against one failure, the model found a different rule to break
+the next morning: a duplicate source one day, a confidence label without a primary the next.
+Prompts don't converge. `generate → validate → repair → revalidate` does, and the validator's
+own error text turns out to be a near-perfect repair instruction.
+
+**A checker that contradicts your own rules will deadlock you.** The paper's rules say a short
+edition beats a padded one. Its validator warned on exactly that, and the gate treated warnings
+as fatal across the whole archive — so one thin Tuesday in August blocked every future edition
+permanently. Advisory and blocking are different things and the distinction has to live in code.
+
+**Instrument the failures that never announce themselves.** Roughly half of cited links rot
+within a decade, oldest first, where nobody looks. Storage ceilings arrive without warning. Both
+are now measured on a schedule, so they surface as a scheduled decision rather than an outage.
+The first link check found two dead citations — one of them three hours old.
 
 ---
 
@@ -82,7 +122,7 @@ prompting.
 
 ### Working with
 
-`Python` · `PyTorch` · `SQL` · `Django` · `Flask` · `OpenCV` · `TensorFlow` · `pandas` · `scikit-learn` · `MongoDB` · `LLMs & fine-tuning` · `Agentic AI` · `Google Cloud` · `Linux RTOS` · `Git`
+`Python` · `PyTorch` · `SQL` · `Django` · `FastAPI` · `Flask` · `OpenCV` · `TensorFlow` · `pandas` · `scikit-learn` · `MongoDB` · `LLMs & fine-tuning` · `Agentic AI` · `RAG` · `Node` · `TypeScript` · `React` · `Google Cloud` · `GitHub Actions` · `Linux RTOS` · `Git`
 
 ---
 
