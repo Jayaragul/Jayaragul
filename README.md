@@ -42,6 +42,14 @@ interfaces non-technical people can use.
 
 **Robotics** — motion profiling under real-time constraints on Linux RTOS, with IoT control.
 
+### Recognition
+
+- **Winner**, Best Use of AI for Zero Hunger & Economic Growth — Tech for Good: Build with AI, GDG Coimbatore (2026)
+- **Top 5 of 70+ teams** — GenAI Hackathon, ML.CBE (2025)
+- **1st place**, paper presentation — RVS College of Engineering & Technology, AI in healthcare (2025)
+- **1st place**, paper presentation — P.A. College of Engineering & Technology, ML & medical algorithms (2024)
+- **1st place**, Idethon at Varnam — Karpagam College of Engineering & Technology (2025)
+
 ### Running right now
 
 **[THE VISSION](https://jayaragul.github.io/THE_VISSION/)** — a daily newspaper about AI with no
@@ -62,26 +70,19 @@ GitHub Actions · the model behind it is deliberately swappable
 
 ### Selected work
 
+Five, on purpose — not a repo index. Each one exists to prove a different fundamental rather
+than to add to a count.
+
 | | |
 |---|---|
-| **[twinops](https://github.com/Jayaragul/twinops)** | Draw your factory, press play, watch the bottleneck appear. A zero-install digital twin studio for production lines that runs entirely in the browser. |
-| **[slm-from-scratch](https://github.com/Jayaragul/slm-from-scratch)** | A 27,846,000-parameter decoder-only transformer trained on TinyStories. Hand-written causal attention, weight-tied embeddings, memory-mapped data pipeline. Trained weights included. |
-| **[INFERENCING-LLM-LAMA](https://github.com/Jayaragul/INFERENCING-LLM-LAMA)** | Privacy-first local AI platform with agentic capabilities — web search, RAG and tools. Runs fully offline on Ollama + FastAPI. |
-| **[industrial-data-agent](https://github.com/Jayaragul/industrial-data-agent)** | Safety-first Gemini-powered CLI for evidence-backed analysis of industrial orders, machine utilisation and inventory, with sandboxed code execution. |
-| **[AGENT-HARNESS](https://github.com/Jayaragul/AGENT-HARNESS)** | Factory AI Copilot — an industrial assistant for inventory checks, machine requirement analysis and risk reports, behind a chat interface. |
-| **[health-care-agent](https://github.com/Jayaragul/health-care-agent)** | Healthcare information assistant built on AI-harness principles, with guardrails and a clear split between routing, tools and generation. |
-| **[agri-hackathon](https://github.com/Jayaragul/agri-hackathon)** | **Thulir** — an AI farming companion for smallholder farmers. Winner: Best Use of AI for Zero Hunger & Economic Growth, GDG Tech for Good 2026. |
-| **[factory-twin](https://github.com/Jayaragul/factory-twin)** | Real-time 3D factory digital twin with AI anomaly detection. React + Three.js front end, FastAPI + SQLAlchemy back end. |
-| **[fundamental-analais](https://github.com/Jayaragul/fundamental-analais)** | Indian Market Analyzer — fundamental analysis for Nifty 50 stocks, built on Streamlit over Yahoo Finance data. |
-| **[kidney](https://github.com/Jayaragul/kidney)** | Streamlit app predicting kidney-disease risk from clinical parameters such as age, blood pressure and blood sugar. |
-| **[The-solver](https://github.com/Jayaragul/The-solver)** | SANKHYA — a mathematical-optimisation core built so nothing it reports is taken on trust. The solver's production path is native C with CUDA kernels and needs no Python runtime to run: revised simplex with an independently checked primal-dual certificate, sparse LU with threshold pivoting, exact-simplex MILP branch-and-bound with validated cover cuts, CUDA PDHG for LP and convex QP. A separate C++/CUDA implementation and a Netlib benchmark harness live alongside it in the same repo. |
-| **visionrag** | Point a phone at a room; come back later and it says what changed — the laptop's gone, there's a new backpack. Place recognition with no GPS or markers, object persistence estimated from detections and misses, and a hard line between checked-and-absent and never-looked. Runs entirely on a laptop CPU, no GPU, no cloud. Private repo. |
-| **certibatch** | Bulk certificate generator — upload one template image and a spreadsheet of names, position the text fields once, and it renders a personalised PDF per row, bundled into a zip. Private repo. |
-| **[python-cli-email](https://github.com/Jayaragul/python-cli-email)** | A CLI for your own IMAP inbox — list, fetch and filter by sender or date, plus semantic search over your mail using MPNet embeddings and FAISS. |
-| **[instagram](https://github.com/Jayaragul/instagram)** | Carousel Slicer — splits a wide Canva or Photoshop panorama into Instagram carousel slides, with a swipeable phone-mockup preview. Processing happens client-side, in the browser. |
-| **[IntoTheLLMs-Workshop](https://github.com/Jayaragul/IntoTheLLMs-Workshop)** | An interactive teaching tool for agentic AI: turns a business prompt into a step-by-step workflow, then compares how it behaves with and without an `AGENTS.md`-style instruction layer. |
-| **[dr-curion-flask](https://github.com/Jayaragul/dr-curion-flask)** | A symptom-checking chatbot backed by Gemini, with a fallback model wired in for when the primary one is unavailable. Flask backend, deployed live. |
-| **[Mask-deduct](https://github.com/Jayaragul/Mask-deduct)** | Face-mask detector served as a Hugging Face Space — a Keras/MobileNetV2 classifier behind a Gradio interface. |
+| **[slm-from-scratch](https://github.com/Jayaragul/slm-from-scratch)** | A 27,846,000-parameter decoder-only transformer trained on TinyStories — causal attention, weight-tied embeddings and the training loop, all hand-written, because calling an API doesn't tell you what's actually happening inside one. Trained weights included. |
+| **[The-solver](https://github.com/Jayaragul/The-solver)** | SANKHYA — a mathematical-optimisation core built so nothing it reports is taken on trust: revised simplex with an independently checked primal-dual certificate, sparse LU with threshold pivoting, exact-simplex MILP branch-and-bound with validated cover cuts, CUDA PDHG for LP and convex QP. Native C/CUDA production path, no Python required to run it. |
+| **[twinops](https://github.com/Jayaragul/twinops)** | Draw your factory, press play, watch the bottleneck appear. A zero-install discrete-event simulator for production lines, running entirely in the browser — the hard part was measuring blocked/starved time as first-class state, not the animation. |
+| **visionrag** | Point a phone at a room; come back later and it says what changed. Place recognition with no GPS or markers, object persistence estimated from detections *and* misses, and an honest line between checked-and-absent and never-looked. Runs on a laptop CPU — no GPU, no cloud. Private repo. |
+| **[agri-hackathon](https://github.com/Jayaragul/agri-hackathon)** | **Thulir** — a voice-first farming companion for smallholder farmers, in Tamil or English. Every crop ranking and dosage comes from a deterministic engine; the model only explains it or reads a photo. Winner, Best Use of AI for Zero Hunger & Economic Growth, GDG Tech for Good 2026. |
+
+The rest — agent wrappers, dashboards, one-off tools — are on [GitHub](https://github.com/Jayaragul?tab=repositories)
+and the [portfolio](https://jayaragul.github.io/MY-PORTFOLIO-WEBSITE/) if you want the full list.
 
 ---
 
