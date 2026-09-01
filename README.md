@@ -74,6 +74,9 @@ GitHub Actions · the model behind it is deliberately swappable
 | **[factory-twin](https://github.com/Jayaragul/factory-twin)** | Real-time 3D factory digital twin with AI anomaly detection. React + Three.js front end, FastAPI + SQLAlchemy back end. |
 | **[fundamental-analais](https://github.com/Jayaragul/fundamental-analais)** | Indian Market Analyzer — fundamental analysis for Nifty 50 stocks, built on Streamlit over Yahoo Finance data. |
 | **[kidney](https://github.com/Jayaragul/kidney)** | Streamlit app predicting kidney-disease risk from clinical parameters such as age, blood pressure and blood sugar. |
+| **[The-solver](https://github.com/Jayaragul/The-solver)** | SANKHYA — a mathematical-optimisation core built so nothing it reports is taken on trust. The solver's production path is native C with CUDA kernels and needs no Python runtime to run: revised simplex with an independently checked primal-dual certificate, sparse LU with threshold pivoting, exact-simplex MILP branch-and-bound with validated cover cuts, CUDA PDHG for LP and convex QP. A separate C++/CUDA implementation and a Netlib benchmark harness live alongside it in the same repo. |
+| **visionrag** | Point a phone at a room; come back later and it says what changed — the laptop's gone, there's a new backpack. Place recognition with no GPS or markers, object persistence estimated from detections and misses, and a hard line between checked-and-absent and never-looked. Runs entirely on a laptop CPU, no GPU, no cloud. Private repo. |
+| **certibatch** | Bulk certificate generator — upload one template image and a spreadsheet of names, position the text fields once, and it renders a personalised PDF per row, bundled into a zip. Private repo. |
 
 ---
 
