@@ -77,6 +77,11 @@ GitHub Actions · the model behind it is deliberately swappable
 | **[The-solver](https://github.com/Jayaragul/The-solver)** | SANKHYA — a mathematical-optimisation core built so nothing it reports is taken on trust. The solver's production path is native C with CUDA kernels and needs no Python runtime to run: revised simplex with an independently checked primal-dual certificate, sparse LU with threshold pivoting, exact-simplex MILP branch-and-bound with validated cover cuts, CUDA PDHG for LP and convex QP. A separate C++/CUDA implementation and a Netlib benchmark harness live alongside it in the same repo. |
 | **visionrag** | Point a phone at a room; come back later and it says what changed — the laptop's gone, there's a new backpack. Place recognition with no GPS or markers, object persistence estimated from detections and misses, and a hard line between checked-and-absent and never-looked. Runs entirely on a laptop CPU, no GPU, no cloud. Private repo. |
 | **certibatch** | Bulk certificate generator — upload one template image and a spreadsheet of names, position the text fields once, and it renders a personalised PDF per row, bundled into a zip. Private repo. |
+| **[python-cli-email](https://github.com/Jayaragul/python-cli-email)** | A CLI for your own IMAP inbox — list, fetch and filter by sender or date, plus semantic search over your mail using MPNet embeddings and FAISS. |
+| **[instagram](https://github.com/Jayaragul/instagram)** | Carousel Slicer — splits a wide Canva or Photoshop panorama into Instagram carousel slides, with a swipeable phone-mockup preview. Processing happens client-side, in the browser. |
+| **[IntoTheLLMs-Workshop](https://github.com/Jayaragul/IntoTheLLMs-Workshop)** | An interactive teaching tool for agentic AI: turns a business prompt into a step-by-step workflow, then compares how it behaves with and without an `AGENTS.md`-style instruction layer. |
+| **[dr-curion-flask](https://github.com/Jayaragul/dr-curion-flask)** | A symptom-checking chatbot backed by Gemini, with a fallback model wired in for when the primary one is unavailable. Flask backend, deployed live. |
+| **[Mask-deduct](https://github.com/Jayaragul/Mask-deduct)** | Face-mask detector served as a Hugging Face Space — a Keras/MobileNetV2 classifier behind a Gradio interface. |
 
 ---
 
