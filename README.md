@@ -84,6 +84,13 @@ than to add to a count.
 The rest — agent wrappers, dashboards, one-off tools — are on [GitHub](https://github.com/Jayaragul?tab=repositories)
 and the [portfolio](https://jayaragul.github.io/MY-PORTFOLIO-WEBSITE/) if you want the full list.
 
+**Community projects** — built for other people to use, not for me:
+
+| | |
+|---|---|
+| **[INFERENCING-LLM-LAMA](https://github.com/Jayaragul/INFERENCING-LLM-LAMA)** | A privacy-first local AI platform — agentic capabilities (web search, RAG, tools) running fully offline on Ollama + FastAPI, so nothing anyone asks it leaves their machine. |
+| **certibatch** | Bulk certificate generator for event and workshop organisers — upload one template image and a spreadsheet of names, position the fields once, and it renders a personalised PDF per participant, bundled into a zip. Private repo. |
+
 ---
 
 ### What shipping these actually taught me
