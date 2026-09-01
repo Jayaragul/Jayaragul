@@ -42,14 +42,6 @@ interfaces non-technical people can use.
 
 **Robotics** — motion profiling under real-time constraints on Linux RTOS, with IoT control.
 
-### Recognition
-
-- **Winner**, Best Use of AI for Zero Hunger & Economic Growth — Tech for Good: Build with AI, GDG Coimbatore (2026)
-- **Top 5 of 70+ teams** — GenAI Hackathon, ML.CBE (2025)
-- **1st place**, paper presentation — RVS College of Engineering & Technology, AI in healthcare (2025)
-- **1st place**, paper presentation — P.A. College of Engineering & Technology, ML & medical algorithms (2024)
-- **1st place**, Idethon at Varnam — Karpagam College of Engineering & Technology (2025)
-
 ### Running right now
 
 **[THE VISSION](https://jayaragul.github.io/THE_VISSION/)** — a daily newspaper about AI with no
